@@ -1,5 +1,11 @@
 <script>
-    import "carbon-components-svelte/css/g80.css";
+	import 'carbon-components-svelte/css/g90.css';
+	import Header from '$lib/components/Header.svelte';
+	import { Content } from 'carbon-components-svelte';
 </script>
 
-<slot />
+<Header />
+
+<Content>
+	<slot />
+</Content>
