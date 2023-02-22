@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_API_URL } from '$env/static/public';
-	import { TabsSkeleton, Grid, Row, Column } from 'carbon-components-svelte';
+	import { TabsSkeleton, Grid, Row, Column, SkeletonText, Accordion, DataTableSkeleton  } from 'carbon-components-svelte';
 
 	let promFrames = (async () => {
 		const frames = await fetch(`${PUBLIC_API_URL}/olt/frame`);
@@ -21,6 +21,20 @@
 		<Column> 
 			{#await promFrames}
 				<TabsSkeleton type="container" count={3} />
+				<br>
+				<SkeletonText heading />
+				<br>
+				<Grid condensed fullWidth>
+					<Row>
+						<Column sm={12} md={2}>
+							<Accordion skeleton count={3} />
+						</Column>
+			
+						<Column sm={12} md={6}>
+							<DataTableSkeleton />
+						</Column>
+					</Row>
+				</Grid>
 			{:then data}
 				<FrameList {data} />
 			{:catch error}
