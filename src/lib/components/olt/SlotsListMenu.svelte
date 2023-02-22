@@ -7,7 +7,7 @@
 </script>
 
 <Tile light>
-	<h4><ContainerRegistry /> Slots (Boards)</h4>
+	<h4><ContainerRegistry size={24} /> Slots (Boards)</h4>
 </Tile>
 <br />
 <Accordion align="start" size="sm">

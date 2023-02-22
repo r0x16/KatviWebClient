@@ -26,7 +26,7 @@
 	model: <strong>{frame.frame_type}</strong>
 </p>
 <br>
-<Grid condensed>
+<Grid condensed fullWidth>
 	<Row>
 		{#await promSlots}
 			<Column sm={12} md={2}>
