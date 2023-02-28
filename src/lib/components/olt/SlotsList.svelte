@@ -5,15 +5,7 @@
 </script>
 
 {#if data.total_board_count === 0}
-	<Column>
-		<Tag type="red">no slots</Tag>
-	</Column>
+	<Tag type="red">no slots</Tag>
 {:else}
-	<Column sm={12} md={3}>
-		<SlotsListMenu {data} />
-	</Column>
-
-	<Column sm={12} md={5}>
-		<DataTableSkeleton />
-	</Column>
+	<SlotsListMenu {data} />
 {/if}
