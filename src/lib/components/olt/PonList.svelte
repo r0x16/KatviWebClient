@@ -23,7 +23,7 @@
 	<svelte:fragment slot="cell" let:row let:cell>
 		{#if cell.key === 'port_status'}
 			{#if cell.value === 'Online'}
-				<CheckmarkFilled color="green" size={16} />
+				<CheckmarkFilled color="#42be65" size={16} />
 			{:else}
 				<ErrorFilled color="red" size={16} />
 			{/if}

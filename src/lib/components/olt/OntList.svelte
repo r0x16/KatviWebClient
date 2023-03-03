@@ -8,6 +8,7 @@
 		Pagination
 	} from 'carbon-components-svelte';
 	import { ImageService, PlayFilledAlt, StopFilledAlt } from 'carbon-icons-svelte';
+	import OntListDetail from './OntListDetail.svelte';
 
 	export let onts: any;
 
@@ -19,18 +20,17 @@
 </script>
 
 <Tile light>
-	<h4><ImageService size={24} /> ONTs</h4>
+	<h4><ImageService size={24}  style="float: right" /> ONTs</h4>
 </Tile>
 <br />
 <DataTable
 	expandable
+	sortable
 	headers={[
 		{ key: 'pon', value: 'PON' },
 		{ key: 'ont_id', value: 'ONU' },
 		{ key: 'description', value: 'Description' },
 		{ key: 'type', value: 'Type' },
-		{ key: 'distance', value: 'Distance' },
-		{ key: 'serial_number', value: 'S/N' },
 		{ key: 'rx_power', value: 'RX' },
 		{ key: 'tx_power', value: 'TX' },
 		{ key: 'run_state', value: 'Status' },
@@ -62,6 +62,10 @@
         {:else}
 			{cell.value}
 		{/if}
+	</svelte:fragment>
+
+	<svelte:fragment slot="expanded-row" let:row>
+		<OntListDetail data={row} />
 	</svelte:fragment>
 </DataTable>
 

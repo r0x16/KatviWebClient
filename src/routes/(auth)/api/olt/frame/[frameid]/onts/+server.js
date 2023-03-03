@@ -21,6 +21,7 @@ export async function GET({ params }) {
             ont.pon = key;
             ont.ont_id = ontId;
             ont.id = `${key}/${ontId}`;
+            ont.services = serviceToArray(ont.services);
             output.push(ont);
         }
     }
@@ -28,4 +29,15 @@ export async function GET({ params }) {
     console.log(output);
 
     return json(output);
+}
+
+/**
+ * @param {{ [x: string]: any; }} services
+ */
+function serviceToArray(services) {
+    let output = [];
+    for(let key in services) {
+        output.push(services[key]);
+    }
+    return output;
 }
