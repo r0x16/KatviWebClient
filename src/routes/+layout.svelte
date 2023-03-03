@@ -12,8 +12,8 @@
 			render="toggle"
 			toggle={{
 				themes: ['g10', 'g80'],
-				labelA: '🌙',
-				labelB: '🌞',
+				labelA: '🌞',
+				labelB: '🌙',
 				hideLabel: true,
 				size: 'sm'
 			}}
