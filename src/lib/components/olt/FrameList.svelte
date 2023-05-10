@@ -3,8 +3,6 @@
 	import Frame from './Frame.svelte';
 
 	export let data: any;
-
-	console.log(data);
 </script>
 
 <Tabs type="container" autoWidth>

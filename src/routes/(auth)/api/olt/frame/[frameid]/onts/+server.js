@@ -26,8 +26,6 @@ export async function GET({ params }) {
         }
     }
 
-    console.log(output);
-
     return json(output);
 }
 

@@ -9,6 +9,8 @@
 	} from 'carbon-components-svelte';
 	import { ImageService, PlayFilledAlt, StopFilledAlt } from 'carbon-icons-svelte';
 	import OntListDetail from './OntListDetail.svelte';
+	import OntPortModal from './OntPortModal.svelte';
+	import OntSettings from './OntSettings.svelte';
 
 	export let onts: any;
 
@@ -16,8 +18,16 @@
 	let page = 1;
 	let filteredRowIds: any[] = [];
 
-	$: console.log('filteredRowIds', filteredRowIds);
+	let portModalOnt: any = null;
+	let portModalOpen: boolean = false;
+
+	let openPortModal = (event: CustomEvent) => {
+		portModalOnt = event.detail.ont;
+		portModalOpen = true;
+	};
 </script>
+
+<OntPortModal ont={portModalOnt} bind:open={portModalOpen} />
 
 <Tile light>
 	<h4><ImageService size={24}  style="float: right" /> ONTs</h4>
@@ -25,7 +35,6 @@
 <br />
 <DataTable
 	expandable
-	sortable
 	headers={[
 		{ key: 'pon', value: 'PON' },
 		{ key: 'ont_id', value: 'ONU' },
@@ -34,7 +43,8 @@
 		{ key: 'rx_power', value: 'RX' },
 		{ key: 'tx_power', value: 'TX' },
 		{ key: 'run_state', value: 'Status' },
-		{ key: 'config_state', value: 'Config State' }
+		{ key: 'config_state', value: 'Config State' },
+		{ key: 'settings', value: '⚙️' }
 	]}
 	rows={onts}
 	{pageSize}
@@ -59,6 +69,8 @@
 			</strong>
 		{:else if cell.key === 'serial_number'}
             <i>{cell.value}</i>
+		{:else if cell.key === 'settings'}
+			<OntSettings ont={row} on:ports={openPortModal} />
         {:else}
 			{cell.value}
 		{/if}
